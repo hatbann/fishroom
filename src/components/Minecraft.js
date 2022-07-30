@@ -23,6 +23,7 @@ import {
 
 import Submit from '../components/Submit';
 import Content from '../components/Content';
+import styles from './css/Game.module.css';
 
 const Minecraft = ({ userObj, game }) => {
   const [contents, setContents] = useState([]);
@@ -88,8 +89,10 @@ const Minecraft = ({ userObj, game }) => {
   };
 
   return (
-    <>
-      <h1>MineCraft</h1>
+    <div className={styles.container}>
+      <h1 className={styles.gameName} style={{ color: '#ef5013' }}>
+        MineCraft
+      </h1>
       <Submit
         onSubmit={onSubmit}
         onChange={onChange}
@@ -99,7 +102,7 @@ const Minecraft = ({ userObj, game }) => {
         imgFile={imgFile}
         game={game}
       />
-      <div>
+      <div className={styles.content}>
         {contents.map((content) => (
           <Content
             contentObj={content}
@@ -109,7 +112,7 @@ const Minecraft = ({ userObj, game }) => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -2,6 +2,7 @@ import AppRouter from './Router';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import authService from '../fbase';
+import styles from './css/App.module.css';
 
 function App() {
   const [init, Setinit] = useState(false);
@@ -21,14 +22,14 @@ function App() {
     });
   }, []);
   return (
-    <>
+    <div className={styles.container}>
       {init ? (
         <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} />
       ) : (
         'Initializing...'
       )}
       <footer>&copy; Hatban</footer>
-    </>
+    </div>
   );
 }
 

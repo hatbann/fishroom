@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './css/Submit.module.css';
 
 const Submit = ({
   onSubmit,
@@ -10,22 +11,38 @@ const Submit = ({
   game,
 }) => {
   return (
-    <div>
+    <div className={styles.container}>
       <form onSubmit={onSubmit} name={game}>
-        <input
-          type="text"
-          placeholder="What's going on?"
-          onChange={onChange}
-          value={objText}
-        />
-        <input type="file" accept="image/*" onChange={onFileChange} />
-        <input type="submit" value="Upload" />
-        {imgFile && (
-          <div>
-            <img src={imgFile} width="50px" height="50px" />{' '}
-            <button onClick={onClickDeleteImg}>Clear</button>
-          </div>
-        )}
+        <div>
+          <input
+            type="text"
+            placeholder="What's going on?"
+            onChange={onChange}
+            value={objText}
+            className={styles.inputText}
+          />
+          <input type="submit" value="Upload" className={styles.upload_btn} />
+        </div>
+        <div className={styles.input_photo}>
+          <label for="attach-img" className={styles.AttachImg_label}>
+            <span>Add photo</span>
+          </label>
+          <input
+            id="attach-img"
+            type="file"
+            accept="image/*"
+            onChange={onFileChange}
+            style={{ display: 'none' }}
+          />
+          {imgFile && (
+            <div className={styles.sample_img}>
+              <img src={imgFile} className={styles.sample_img_preview} />{' '}
+              <button onClick={onClickDeleteImg} className={styles.delete_btn}>
+                Clear
+              </button>
+            </div>
+          )}
+        </div>
       </form>
     </div>
   );

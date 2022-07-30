@@ -26,6 +26,7 @@ import HomeProfile from '../components/HomeProfile';
 import Submit from '../components/Submit';
 import Apex from '../components/Apex';
 import Minecraft from '../components/Minecraft';
+import styles from './css/Home.module.css';
 
 const GAME_TYPE = {
   APEX: 'apex',
@@ -60,11 +61,11 @@ const Home = ({ userObj }) => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <HomeProfile userObj={userObj} onLogout={onLogout} />
       <Minecraft userObj={userObj} game={GAME_TYPE.MINECRAFT} />
       <Apex userObj={userObj} game={GAME_TYPE.APEX} />
-    </>
+    </div>
   );
 };
 

@@ -2,7 +2,7 @@ import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { deleteObject, ref } from 'firebase/storage';
 import React, { useState } from 'react';
 import { dbService, storageService } from '../fbase';
-
+import styles from './css/Content.module.css';
 const Content = ({ contentObj, isOwner, game }) => {
   const ContentTextRef = doc(dbService, game, `${contentObj.id}`);
   const ContentImgRef = ref(storageService, contentObj.imgFileURL);
@@ -12,7 +12,6 @@ const Content = ({ contentObj, isOwner, game }) => {
   const onToggleEdit = () => {
     setEditing((prev) => !prev);
   };
-  console.log(contentObj);
   const onDelete = async () => {
     const ok = window.confirm('정말 삭제하시겠습니까?');
     if (ok) {
@@ -48,32 +47,48 @@ const Content = ({ contentObj, isOwner, game }) => {
   return (
     <div>
       {editing ? (
-        <>
-          <form onSubmit={onEdit}>
-            <img src={contentObj.imgFileURL} width="100px" height="100px"></img>
-            <input
-              type="text"
-              value={newobjText}
-              onChange={onChange}
-              required
-            />
-            <input type="submit" value="edit" />
-          </form>
-          <button onClick={onToggleEdit}>Cancel Edit</button>
-        </>
+        <div className={styles.edit_container}>
+          <img
+            src={contentObj.imgFileURL}
+            className={styles._edit_content_Img}
+          ></img>
+          <div className={styles.edit_form}>
+            <form onSubmit={onEdit}>
+              <textarea
+                type="text"
+                value={newobjText}
+                onChange={onChange}
+                required
+                className={styles.input_text}
+              />
+              <div className={styles.edit_btns}>
+                <input type="submit" value="edit" className={styles.btn} />
+                <button onClick={onToggleEdit} className={styles.btn}>
+                  Cancel Edit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       ) : (
-        <>
+        <div className={styles.content_container}>
           {contentObj.imgFileURL && (
-            <img src={contentObj.imgFileURL} width="100px" height="100px" />
-          )}
-          <h4>{contentObj.text}</h4>
-          {isOwner && (
             <>
-              <button onClick={onToggleEdit}>Edit</button>
-              <button onClick={onDelete}>Delete</button>
+              <img src={contentObj.imgFileURL} className={styles.content_Img} />
             </>
           )}
-        </>
+          <span className={styles.content_text}>{contentObj.text}</span>
+          {isOwner && (
+            <div className={styles.btns}>
+              <button onClick={onToggleEdit} className={styles.btn}>
+                Edit
+              </button>
+              <button onClick={onDelete} className={styles.btn}>
+                Delete
+              </button>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );

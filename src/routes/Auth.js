@@ -17,6 +17,7 @@ import {
   query,
 } from 'firebase/firestore';
 import React, { useState } from 'react';
+import styles from './css/Auth.module.css';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -67,11 +68,11 @@ const Auth = () => {
   };
 
   return (
-    <div>
-      <button onClick={onToggle}>
+    <div className={styles.container}>
+      <button onClick={onToggle} className={styles.toggle_btn}>
         {newAccount ? '기존 회원 로그인' : '계정 생성'}
       </button>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className={styles.form}>
         <input
           name="email"
           type="email"
@@ -79,6 +80,7 @@ const Auth = () => {
           placeholder="Email"
           required
           value={email}
+          className={styles.input}
         />
         <input
           name="pw"
@@ -87,6 +89,7 @@ const Auth = () => {
           placeholder="Password"
           required
           value={pw}
+          className={styles.input}
         />
         {newAccount ? (
           <input
@@ -96,11 +99,16 @@ const Auth = () => {
             placeholder="NickName"
             required
             value={nickname}
+            className={styles.input}
           />
         ) : null}
-        <input type="submit" value={newAccount ? '계정생성' : '로그인'}></input>
+        <input
+          type="submit"
+          value={newAccount ? '계정생성' : '로그인'}
+          className={styles.submit_btn}
+        ></input>
       </form>
-      <span>{error}</span>
+      <span className={styles.error}>{error}</span>
       <div></div>
     </div>
   );
