@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fishroom/static/css/main.89f5e0a9.css",
+    "main.js": "/fishroom/static/js/main.3c3800bc.js",
+    "index.html": "/fishroom/index.html",
+    "main.89f5e0a9.css.map": "/fishroom/static/css/main.89f5e0a9.css.map",
+    "main.3c3800bc.js.map": "/fishroom/static/js/main.3c3800bc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89f5e0a9.css",
+    "static/js/main.3c3800bc.js"
+  ]
+}
