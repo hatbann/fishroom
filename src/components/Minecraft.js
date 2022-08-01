@@ -22,8 +22,8 @@ import {
 } from '../fbase';
 
 import Submit from '../components/Submit';
-import Content from '../components/Content';
 import styles from './css/Game.module.css';
+import CustomSlider from './CustomSlider';
 
 const Minecraft = ({ userObj, game }) => {
   const [contents, setContents] = useState([]);
@@ -88,6 +88,42 @@ const Minecraft = ({ userObj, game }) => {
     setImgFile('');
   };
 
+  //슬라이더 부분
+  var settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.gameName} style={{ color: '#ef5013' }}>
@@ -101,17 +137,9 @@ const Minecraft = ({ userObj, game }) => {
         onClickDeleteImg={onClickDeleteImg}
         imgFile={imgFile}
         game={game}
+        key={game}
       />
-      <div className={styles.content}>
-        {contents.map((content) => (
-          <Content
-            contentObj={content}
-            key={content.id}
-            isOwner={content.createdId === userObj.uid}
-            game={game}
-          />
-        ))}
-      </div>
+      <CustomSlider contents={contents} userObj={userObj} game={game} />
     </div>
   );
 };

@@ -1,0 +1,7 @@
+.slider {
+  width: 600px;
+}
+.slick-prev:before,
+.slick-next:before {
+  color: yellow !important;
+}

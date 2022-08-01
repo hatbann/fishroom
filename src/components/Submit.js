@@ -24,11 +24,11 @@ const Submit = ({
           <input type="submit" value="Upload" className={styles.upload_btn} />
         </div>
         <div className={styles.input_photo}>
-          <label for="attach-img" className={styles.AttachImg_label}>
+          <label for={`attach-img${game}`} className={styles.AttachImg_label}>
             <span>Add photo</span>
           </label>
           <input
-            id="attach-img"
+            id={`attach-img${game}`}
             type="file"
             accept="image/*"
             onChange={onFileChange}

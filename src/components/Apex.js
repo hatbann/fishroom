@@ -22,8 +22,8 @@ import {
 } from '../fbase';
 
 import Submit from '../components/Submit';
-import Content from '../components/Content';
 import styles from './css/Game.module.css';
+import CustomSlider from './CustomSlider';
 
 const Apex = ({ userObj, game }) => {
   const [contents, setContents] = useState([]);
@@ -101,17 +101,9 @@ const Apex = ({ userObj, game }) => {
         onClickDeleteImg={onClickDeleteImg}
         imgFile={imgFile}
         game={game}
+        className
       />
-      <div className={styles.content}>
-        {contents.map((content) => (
-          <Content
-            contentObj={content}
-            key={content.id}
-            isOwner={content.createdId === userObj.uid}
-            game={game}
-          />
-        ))}
-      </div>
+      <CustomSlider contents={contents} userObj={userObj} game={game} />
     </div>
   );
 };
