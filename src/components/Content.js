@@ -45,7 +45,7 @@ const Content = ({ contentObj, isOwner, game }) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {editing ? (
         <div className={styles.edit_container}>
           <img

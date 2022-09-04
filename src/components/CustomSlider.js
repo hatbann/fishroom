@@ -7,13 +7,16 @@ import styles from './css/CustomSlider.module.css';
 import Content from '../components/Content';
 
 const CustomSlider = ({ contents, userObj, game }) => {
+  const width = window.innerWidth;
+
   const settings = {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 3,
     initialSlide: 0,
+    variableWidth: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -43,7 +46,7 @@ const CustomSlider = ({ contents, userObj, game }) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <Slider {...settings} className={styles.slider}>
         {contents.map((content) => (
           <Content

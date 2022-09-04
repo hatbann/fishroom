@@ -137,9 +137,10 @@ const Minecraft = ({ userObj, game }) => {
         onClickDeleteImg={onClickDeleteImg}
         imgFile={imgFile}
         game={game}
-        key={game}
       />
-      <CustomSlider contents={contents} userObj={userObj} game={game} />
+      <div className={styles.slider}>
+        <CustomSlider contents={contents} userObj={userObj} game={game} />
+      </div>
     </div>
   );
 };

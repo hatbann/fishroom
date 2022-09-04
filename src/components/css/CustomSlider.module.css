@@ -1,7 +1,21 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .slider {
-  width: 600px;
+  width: 700px;
 }
 .slick-prev:before,
 .slick-next:before {
   color: yellow !important;
+}
+
+@media screen and (max-width: 420px) {
+  .slider {
+    width: 300px;
+  }
+  .slick-slide {
+    width: 100px;
+  }
 }
